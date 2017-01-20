@@ -1,4 +1,4 @@
-#!/usr/bin/perl 
+#!/usr/bin/perl
 
 use strict;
 use warnings;
@@ -13,7 +13,7 @@ Functions for the Jailkit Webmin module
   foreign_require("jailkit", "jailkit-lib.pl");
   $jk_init_ini = jailkit::get_jk_init_ini();
 
-$jk_init_ini will contain a list of hashrefs of configuration 
+$jk_init_ini will contain a list of hashrefs of configuration
 directives from jk_init.ini.
 
 =cut
@@ -29,13 +29,14 @@ Returns the jailkit configuration as a list of hash references with name and key
 =cut
 
 sub get_jk_init_ini {
-	use Config::INI::Reader;
+	use Config::Simple;
 
-	my $config = Config::INI::Reader->read_file($config{'jk_init_ini'});
-	return $config;
+	my $jk_init_ini = new Config::Simple('/etc/jailkit/jk_init.ini');
+		#"$config{'jailkit_config_dir'}/$config{'jk_init_ini'}");
+	return \%$jk_init_ini;
 }
 
-=head2 write_jk_init_config(\%jk_init_ini)
+=head2 write_jk_init_ini(\%jk_init_ini)
 
 Write configuration file array to config file. May return an error object, if write fails.
 

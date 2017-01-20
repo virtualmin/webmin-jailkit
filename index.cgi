@@ -13,7 +13,7 @@ ui_print_header(undef, $text{'index_title'}, "", "index", 1, 1, 0,
     undef, undef, undef, undef);
 
 my @table;
-foreach my $jail (keys %$jk_init_ini) {
+foreach my $jail (keys %{$jk_init_ini}) {
   push(@table, [
     { 'type' => 'checkbox', 'name' => 'd',
       'value' => $jail,
@@ -24,16 +24,19 @@ foreach my $jail (keys %$jk_init_ini) {
 
 my @buttons;
 push(@buttons, [
-  [ "delete", $text{'jk_delete'} ]
+  [ "delete", $text{'index_delete_jail'} ]
 ]);
 
 my @actions;
 push(@actions, [
-  [ "create", $text{'jk_create'} ]
+  [ "create", $text{'index_create_jail'} ]
 ]);
 
-ui_form_columns_table('delete_jk_init.cgi', @buttons, 1, @actions, \@table);
+use Data::Dumper;
+print "<!-- " . Dumper($jk_init_ini) . " -->\n";
 
-print ui_form_end([ [ "save", $text{'form_save'} ] ]); # save_config
+print "<!-- " . Dumper(get_jk_init_ini()) . " -->\n";
+
+ui_form_columns_table('delete_jk_init.cgi', @buttons, 1, @actions, \@table);
 
 ui_print_footer("/", $text{'index'});
