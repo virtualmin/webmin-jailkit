@@ -1,0 +1,2 @@
+jailkit_config_dir=/etc/jailkit
+jk_init_ini=/etc/jailkit/jk_init.ini

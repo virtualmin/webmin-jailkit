@@ -1,0 +1,5 @@
+name=Jailkit
+desc=Jailkit Jail Manager
+os_support=*-linux
+category=system
+version=0.1

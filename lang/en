@@ -1,0 +1,8 @@
+index_title=Jailkit
+
+index_jails=Available Jails
+index_create_jail=Create a new Jail configuration
+index_delete_jail=Delete selected
+index_initialize=Initialize Jail for user
+index_edit_jail=Edit Jail
+index_comment=Comment

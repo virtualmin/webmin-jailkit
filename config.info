@@ -1,0 +1,2 @@
+jailkit_config_dir=Path to Jailkit configuration directory,0
+jk_init_ini=Path to the jk_init.ini configuration file,0
