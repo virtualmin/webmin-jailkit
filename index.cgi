@@ -5,20 +5,21 @@ use strict;
 
 our %text;
 
-require 'jailkit-lib.pl';
+require './jailkit-lib.pl';
 
 my $jk_init_ini = get_jk_init_ini();
+
+my @sections = $jk_init_ini->Sections();
 
 ui_print_header(undef, $text{'index_title'}, "", "index", 1, 1, 0,
     undef, undef, undef, undef);
 
 my @table;
-foreach my $jail (keys %{$jk_init_ini}) {
+foreach my $jail (@sections) {
   push(@table, [
-    { 'type' => 'checkbox', 'name' => 'd',
-      'value' => $jail,
-      'comment' => "$jk_init_ini->{$jail}{'comment'}"
-    }
+    { 'type' => 'checkbox', 'name' => 'd', 'value' => $jail },
+    "<a href=\"edit_jail.cgi?jail=$jail\">".&html_escape($jail)."</a>",
+    $jk_init_ini->val("$jail", 'comment')
   ]);
 }
 
@@ -29,14 +30,22 @@ push(@buttons, [
 
 my @actions;
 push(@actions, [
-  [ "create", $text{'index_create_jail'} ]
+  [ "edit_jail.cgi?new=1", $text{'index_create_jail'} ]
 ]);
 
-use Data::Dumper;
-print "<!-- " . Dumper($jk_init_ini) . " -->\n";
+#use Data::Dumper;
+#print "<!-- " . Dumper(@table) . " -->\n";
 
-print "<!-- " . Dumper(get_jk_init_ini()) . " -->\n";
+print ui_form_columns_table(
+  'delete_jail.cgi',
+  @buttons,
+  1,
+  @actions,
+  undef,
+  [ $text{'index_delete'}, $text{'index_jail_id'}, $text{'index_comment'} ],
+  undef,
+  \@table,
+  undef,
+  1);
 
-ui_form_columns_table('delete_jk_init.cgi', @buttons, 1, @actions, \@table);
-
-ui_print_footer("/", $text{'index'});
+ui_print_footer("");

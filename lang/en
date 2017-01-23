@@ -1,8 +1,33 @@
 index_title=Jailkit
 
+index_delete=Delete
+index_jail_id=Jail ID
+index_commment=Comment
 index_jails=Available Jails
-index_create_jail=Create a new Jail configuration
+index_create_jail=Create a new jail
 index_delete_jail=Delete selected
-index_initialize=Initialize Jail for user
+index_initialize=Initialize jail for user
 index_edit_jail=Edit Jail
 index_comment=Comment
+
+edit_jail_return=Return to jail list
+edit_jail_not_found=That jail doesn't exist!
+edit_jail_name=Jail ID
+edit_jail_comment=Comment
+edit_jail_paths=Paths to include in Jail
+edit_jail_paths_w_owner=Paths to include (keep ownership)
+edit_jail_users=Users to include in passwd
+edit_jail_groups=Groups to include in passwd
+edit_jail_need_logsocket=Log socket required?
+edit_jail_includesections=Other jails to inherit from
+edit_jail_emptydirs=Empty directories to create in jail
+edit_jail_devices=Devices to create in jail
+
+save_jail=Save Jail
+
+error_save_failed=Saving jail failed
+error_jail_exists=Jail already exists!
+error_jail_not_found=Jail named $1 doesn't exist!
+
+delete_are_you_sure=Are you sure you want to delete the following jail(s)? This action cannot be undone.
+delete_confirm=Delete

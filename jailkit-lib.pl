@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Error qw(:try);
 
-our %config;
+our (%config, %text);
 
 =head1 jailkit-lib.pl
 
@@ -29,11 +29,10 @@ Returns the jailkit configuration as a list of hash references with name and key
 =cut
 
 sub get_jk_init_ini {
-	use Config::Simple;
+	use Config::IniFiles;
 
-	my $jk_init_ini = new Config::Simple('/etc/jailkit/jk_init.ini');
-		#"$config{'jailkit_config_dir'}/$config{'jk_init_ini'}");
-	return \%$jk_init_ini;
+	my $jk_init_ini = new Config::IniFiles( -file=>'/etc/jailkit/jk_init.ini');
+	return $jk_init_ini;
 }
 
 =head2 write_jk_init_ini(\%jk_init_ini)
@@ -43,9 +42,12 @@ Write configuration file array to config file. May return an error object, if wr
 =cut
 
 sub write_jk_init_ini {
-	use Config::INI::Writer;
+	use Config::IniFiles;
 	my ($jk_init_ini) = @_;
-	Config::INI::Writer->write_file($jk_init_ini, $config{'jk_init_ini'});
+	my $result = $jk_init_ini->RewriteConfig($config{'jk_init_ini'});
+	unless ($result) {
+		error($text{'error_save_failed'});
+	}
 	return;
 }
 
