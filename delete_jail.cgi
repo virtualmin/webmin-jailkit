@@ -50,3 +50,5 @@ else {
   print "</center>\n";
   print "</div>\n";
 }
+
+ui_print_footer("");
