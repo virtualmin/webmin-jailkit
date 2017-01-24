@@ -38,6 +38,8 @@ if (length $in{'paths'}) { $jk_init_ini->newval($in{'jail'},
 	'paths', $in{'paths'}); }
 if (length $in{'paths_w_owner'}) { $jk_init_ini->newval($in{'jail'},
 	'paths_w_owner', $in{'paths_w_owner'}); }
+if (length $in{'paths_w_setuid'}) { $jk_init_ini->newval($in{'jail'},
+	'paths_w_setuid', $in{'paths_w_setuid'}); }
 if (length $in{'users'}) { $jk_init_ini->newval($in{'jail'},
 	'users', $in{'users'}); }
 if (length $in{'groups'}) { $jk_init_ini->newval($in{'jail'},
