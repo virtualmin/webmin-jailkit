@@ -2,7 +2,6 @@
 
 use strict;
 use warnings;
-use Error qw(:try);
 
 our (%config, %text);
 
