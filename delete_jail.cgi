@@ -48,5 +48,5 @@ else {
   #print ui_submit($text{delete_confirm}, "confirm");
   print ui_form_end([ [ "confirm", $text{'delete_confirm'} ] ]);
   print "</center>\n";
-  print "</div>\n";
+  ui_print_footer("");
 }

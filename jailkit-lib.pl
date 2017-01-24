@@ -31,7 +31,8 @@ Returns the jailkit configuration as a list of hash references with name and key
 sub get_jk_init_ini {
 	use Config::IniFiles;
 
-	my $jk_init_ini = new Config::IniFiles( -file=>'/etc/jailkit/jk_init.ini');
+	my $config_file = "$config{'jailkit_config_dir'}/jk_init.ini";
+	my $jk_init_ini = new Config::IniFiles( -file=>"$config{'jailkit_config_dir'}/jk_init.ini" );
 	return $jk_init_ini;
 }
 
