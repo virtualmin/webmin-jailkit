@@ -31,14 +31,17 @@ else {
 print ui_form_start("save_jail.cgi");
 print ui_hidden("orig_jail", $in{'jail'});
 
-print ui_table_start( $text{'jail_detail'}, undef, 2);
-
+print ui_
+print ui_hidden_table_start($text{'edit_jail_metadata'}, undef, 1, 'metadata', 1);
 # name
 print ui_table_row( hlink($text{'edit_jail_name'}, 'name'),
   ui_textbox('jail', $in{'jail'}));
 # comment/description
 print ui_table_row( hlink($text{'edit_jail_comment'}, 'comment'),
   ui_textbox('comment', $jail_params{'comment'}));
+print ui_hidden_table_end('metadata');
+
+print ui_hidden_table_start($text{'edit_jail_includes'}, undef, 1, 'includes', 1);
 # paths
 print ui_table_row( hlink($text{'edit_jail_paths'}, 'paths'),
   ui_textarea('paths', $jail_params{'paths'}));
@@ -46,10 +49,6 @@ print ui_table_row( hlink($text{'edit_jail_paths_w_owner'}, 'paths_w_owner'),
   ui_textarea('paths_w_owner', $jail_params{'paths_w_owner'}));
 print ui_table_row( hlink($text{'edit_jail_paths_w_setuid'}, 'paths_w_setuid'),
   ui_textarea('paths_w_setuid', $jail_params{'paths_w_setuid'}));
-print ui_table_row( hlink($text{'edit_jail_users'}, 'users'),
-  ui_textarea('users', $jail_params{'users'}));
-print ui_table_row( hlink($text{'edit_jail_groups'}, 'groups'),
-  ui_textarea('groups', $jail_params{'groups'}));
 print ui_table_row( hlink($text{'edit_jail_includesections'}, 'includesections'),
   ui_textarea('includesections'), $jail_params{'includesections'});
 print ui_table_row( hlink($text{'edit_jail_emptydirs'}, 'emptydirs'),
@@ -59,8 +58,14 @@ print ui_table_row( hlink($text{'edit_jail_devices'}, 'devices'),
 print ui_table_row( hlink($text{'edit_jail_need_logsocket'}, 'need_logsocket'),
   ui_checkbox('need_logsocket', 1,
   undef, $jail_params{'need_logsocket'} ? 1 : 0));
+print ui_hidden_table_end('includes');
 
-print ui_table_end();
+print ui_hidden_table_start($text{'edit_jail_ug'}, undef, 1, 'usergroups', 1);
+print ui_table_row( hlink($text{'edit_jail_users'}, 'users'),
+  ui_textarea('users', $jail_params{'users'}));
+print ui_table_row( hlink($text{'edit_jail_groups'}, 'groups'),
+  ui_textarea('groups', $jail_params{'groups'}));
+print ui_hidden_table_end('usergroups');
 
 print ui_form_end([ [undef, $text{'save_jail'}] ]);
 

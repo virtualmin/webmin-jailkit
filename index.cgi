@@ -46,6 +46,9 @@ print ui_form_columns_table(
   undef,
   \@table,
   undef,
-  1);
+  1,
+  $text{'index_jail_list'},
+  $text{'index_no_jails'}
+);
 
 ui_print_footer("");
