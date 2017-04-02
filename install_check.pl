@@ -8,7 +8,8 @@ do 'jailkit-lib.pl';
 # For mode 0, returns 1 if installed, 0 if not
 sub is_installed
 {
+my ($mode) = @_;
 # Available config file in the default location?
-#return 0 if (!-x $config{'jailkit_init_ini'});
-return 1;
+return 0 if (!-r $config{'jailkit_init_ini'});
+return $mode ? 2 : 0;
 }
