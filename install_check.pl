@@ -1,5 +1,8 @@
 # install_check.pl
+use strict;
+use warnings;
 
+our %config;
 do 'jailkit-lib.pl';
 
 # is_installed(mode)
