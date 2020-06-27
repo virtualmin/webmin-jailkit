@@ -7,7 +7,7 @@ require './jailkit-lib.pl';
 ReadParse();
 
 my $jk_init_ini = get_jk_init_ini();
-my @sections = $jk_init_ini->Sections();
+my @sections    = $jk_init_ini->Sections();
 my %jail_params;
 
 my @d = split(/\0/, $in{'d'});
@@ -20,7 +20,7 @@ if (defined $in{'confirmed'}) {
     }
     else {
       # Does this jail exist?
-      error( text('error_jail_not_found', "$jail", "<br>\n"));
+      error(text('error_jail_not_found', "$jail", "<br>\n"));
     }
   }
   write_jk_init_ini($jk_init_ini);
@@ -33,6 +33,7 @@ else {
   # Check to be sure we really want these jails gone
   print ui_form_start("delete_jail.cgi", "post");
   foreach my $jail (@d) {
+
     # Re-send all of the d_* items with a confirmed field
     print ui_hidden("d", $jail);
   }
@@ -45,8 +46,9 @@ else {
   print "</p>\n";
 
   print ui_hidden("confirmed", "1");
+
   #print ui_submit($text{delete_confirm}, "confirm");
-  print ui_form_end([ [ "confirm", $text{'delete_confirm'} ] ]);
+  print ui_form_end([["confirm", $text{'delete_confirm'}]]);
   print "</center>\n";
   ui_print_footer("");
 }

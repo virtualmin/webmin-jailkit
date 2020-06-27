@@ -1,5 +1,4 @@
 #!/usr/bin/perl
-
 use strict;
 use warnings;
 
@@ -17,7 +16,7 @@ directives from jk_init.ini.
 
 =cut
 
-BEGIN { push(@INC, ".."); };
+BEGIN { push(@INC, ".."); }
 use WebminCore;
 init_config();
 
@@ -28,10 +27,11 @@ Returns the jailkit configuration as a list of hash references with name and key
 =cut
 
 sub get_jk_init_ini {
-	use Config::IniFiles;
+  use Config::IniFiles;
 
-	my $jk_init_ini = new Config::IniFiles( -file=>"$config{'jailkit_config_dir'}/jk_init.ini" );
-	return $jk_init_ini;
+  my $jk_init_ini = new Config::IniFiles(
+    -file => "$config{'jailkit_config_dir'}/jk_init.ini");
+  return $jk_init_ini;
 }
 
 =head2 write_jk_init_ini(\%jk_init_ini)
@@ -41,13 +41,13 @@ Write configuration file array to config file. May return an error object, if wr
 =cut
 
 sub write_jk_init_ini {
-	use Config::IniFiles;
-	my ($jk_init_ini) = @_;
-	my $result = $jk_init_ini->RewriteConfig($config{'jk_init_ini'});
-	unless ($result) {
-		error($text{'error_save_failed'});
-	}
-	return;
+  use Config::IniFiles;
+  my ($jk_init_ini) = @_;
+  my $result = $jk_init_ini->RewriteConfig($config{'jk_init_ini'});
+  unless ($result) {
+    error($text{'error_save_failed'});
+  }
+  return;
 }
 
 1;
