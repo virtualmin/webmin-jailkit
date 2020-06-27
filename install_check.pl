@@ -1,6 +1,6 @@
 # install_check.pl
 
-do 'jailkit-lib.pl';
+do './jailkit-lib.pl';
 
 # is_installed(mode)
 # For mode 1, returns 2 if the server is installed and configured for use by
