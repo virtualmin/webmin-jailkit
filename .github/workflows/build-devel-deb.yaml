@@ -17,11 +17,9 @@ jobs:
         run: |-
           sudo apt-get -y update
           sudo apt-get -y install perl build-essential gnupg pbuilder curl
-          cd ..
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/mod_def_list.txt
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/makemoduledeb.pl
       - name: Build package
         run: |-
-          cd ..
           mkdir tmp
           perl makemoduledeb.pl --deb-depends --licence 'GPLv3' --email 'joe@virtualmin.com' --allow-overwrite --target-dir tmp jailkit
