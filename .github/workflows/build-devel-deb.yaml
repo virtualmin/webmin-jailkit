@@ -1,0 +1,25 @@
+name: "build-devel-deb"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - users: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |-
+          sudo apt-get -y update
+          sudo apt-get -y install perl build-essential gnupg pbuilder curl
+          cd ..
+          curl -O https://raw.githubusercontent.com/webmin/webmin/master/mod_def_list.txt
+          curl -O https://raw.githubusercontent.com/webmin/webmin/master/makemoduledeb.pl
+      - name: Build package
+        run: |-
+          cd ..
+          mv webmin-jailkit jailkit
+          perl makemoduledeb.pl --deb-depends --licence 'GPLv3' --email 'joe@virtualmin.com' --allow-overwrite --target-dir tmp jailkit
