@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
+        path: 'jailkit'
 
       - name: Install dependencies
         run: |-
@@ -21,6 +22,5 @@ jobs:
       - name: Build package
         run: |-
           cd ..
-          mv webmin-jailkit jailkit
           mkdir tmp
           perl makemoduledeb.pl --deb-depends --licence 'GPLv3' --email 'joe@virtualmin.com' --allow-overwrite --target-dir tmp jailkit
