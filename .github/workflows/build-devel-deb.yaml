@@ -16,11 +16,12 @@ jobs:
       - name: Install dependencies
         run: |-
           sudo apt-get -y update
-          sudo apt-get -y install perl build-essential gnupg pbuilder curl libconfig-inifiles-perl
+          sudo apt-get -y install perl build-essential gnupg pbuilder curl libconfig-inifiles-perl libtest-strict-perl
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/mod_def_list.txt
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/makemoduledeb.pl
       - name: Run tests
         run: |-
+          cd jailkit
           prove
       - name: Build package
         run: |-
