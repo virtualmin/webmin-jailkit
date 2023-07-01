@@ -22,4 +22,5 @@ jobs:
         run: |-
           cd ..
           mv webmin-jailkit jailkit
+          mkdir tmp
           perl makemoduledeb.pl --deb-depends --licence 'GPLv3' --email 'joe@virtualmin.com' --allow-overwrite --target-dir tmp jailkit
