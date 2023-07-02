@@ -11,8 +11,10 @@ BUILD=$(date +'%Y%m%d%H%M')
 . jailkit/module.info
 VERSION="${version}_devel_${BUILD}"
 
+cd ..
 mkdir tmp
 perl makemoduledeb.pl --deb-depends --licence 'GPLv3' --email 'joe@virtualmin.com' --allow-overwrite --target-dir tmp "$MOD" "$VERSION"
+mv "tmp/${NAME}_${VERSION}_all.deb" .
 
 # Publish to aptly
 curl --user $APTLY_USER:$APTLY_PASSWD -X POST -F file=@${NAME}_${VERSION}_all.deb https://aptly.virtualmin.com/api/files/${NAME}_${VERSION}
