@@ -21,7 +21,7 @@ else
 fi
 
 mkdir tmp
-perl makemodulerpm.pl --rpm-depends --licence 'GPLv3' --email 'joe@virtualmin.com' --allow-overwrite --target-dir tmp "$epoch" "$MOD" "$VERSION"
+perl makemodulerpm.pl --rpm-depends --licence 'GPLv3' --allow-overwrite --target-dir tmp "$epoch" "$MOD" "$VERSION"
 mv "tmp/${NAME}_${VERSION}_all.deb" .
 
 # Publish to pulp, I guess?
