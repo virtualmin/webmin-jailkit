@@ -1,6 +1,9 @@
 #!/bin/bash
 # Build and publish a package, called by github actions
 
+# echo, exit on error/undefined vars
+set -xeu
+
 MOD='jailkit'
 NAME="webmin-$MOD"
 
