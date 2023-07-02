@@ -28,4 +28,4 @@ jobs:
           APTLY_USER: ${{ secrets.APTLY_USER }}
           APTLY_PASSWD: ${{ secrets.APTLY_PASSWD }}
         run: |-
-          jailkit/build-devel.sh
+          jailkit/build-devel-deb.sh
