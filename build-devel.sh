@@ -8,8 +8,8 @@ NAME="webmin-$MOD"
 BUILD=$(date +'%Y%m%d%H%M')
 
 # Load module.info to get version
-. jailkit/module.info
-VERSION="${version}_devel_${BUILD}"
+version=$(grep version module.info | cut -d'=' -f2)
+VERSION="${version}.devel.${BUILD}"
 
 mkdir tmp
 perl makemoduledeb.pl --deb-depends --licence 'GPLv3' --email 'joe@virtualmin.com' --allow-overwrite --target-dir tmp "$MOD" "$VERSION"
