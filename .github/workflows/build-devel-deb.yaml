@@ -24,5 +24,8 @@ jobs:
           cd jailkit
           prove
       - name: Build package
+        env:
+          APTLY_USER: ${{ secrets.APTLY_USER }}
+          APTLY_PASSWD: ${{ secrets.APTLY_PASSWD }}
         run: |-
           jailkit/build-devel.sh
