@@ -8,7 +8,7 @@ NAME="webmin-$MOD"
 BUILD=$(date +'%Y%m%d%H%M')
 
 # Load module.info to get version
-version=$(grep version module.info | cut -d'=' -f2)
+version=$(grep version $MOD/module.info | cut -d'=' -f2)
 VERSION="${version}.devel.${BUILD}"
 
 mkdir tmp
