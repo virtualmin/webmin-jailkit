@@ -21,4 +21,4 @@ mv "tmp/${NAME}_${VERSION}_all.deb" .
 # Publish to aptly
 curl --user $APTLY_USER:$APTLY_PASSWD -X POST -F file=@${NAME}_${VERSION}_all.deb https://aptly.virtualmin.com/api/files/${NAME}_${VERSION}
 curl --user $APTLY_USER:$APTLY_PASSWD -X POST https://aptly.virtualmin.com/api/repos/virtualmin-7-gpl-devel/file/${NAME}_${VERSION}
-curl --user $APTLY_USER:$APTLY_PASSWD https://aptly.virtualmin.com/api/publish/filesystem:7-gpl/virtualmin-devel
+curl -i --user $APTLY_USER:$APTLY_PASSWD -X PUT -H 'Content-Type: application/json' --data '{}' https://aptly.virtualmin.com/api/publish/filesystem:7-gpl:./virtualmin-devel
