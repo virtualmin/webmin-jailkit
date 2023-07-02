@@ -25,5 +25,4 @@ jobs:
           prove
       - name: Build package
         run: |-
-          mkdir tmp
-          perl makemoduledeb.pl --deb-depends --licence 'GPLv3' --email 'joe@virtualmin.com' --allow-overwrite --target-dir tmp jailkit
+          jailkit/build-devel.sh
