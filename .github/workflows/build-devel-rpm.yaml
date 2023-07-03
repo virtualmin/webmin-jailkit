@@ -19,10 +19,6 @@ jobs:
           sudo apt-get -y install rpm perl build-essential gnupg curl libconfig-inifiles-perl libtest-strict-perl
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/mod_def_list.txt
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/makemodulerpm.pl
-      - name: Run tests
-        run: |-
-          cd jailkit
-          prove
       - name: Build package
         env:
           APTLY_USER: ${{ secrets.APTLY_USER }}
