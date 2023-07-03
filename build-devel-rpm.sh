@@ -20,14 +20,13 @@ else
   epoch=""
 fi
 
-mkdir tmp
 # FIXME after PR is merged to Webmin
 mkdir -p ${HOME}/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 mkdir -p "${HOME}/rpmbuild/RPMS/noarch"
 ls "${HOME}/rpmbuild/RPMS/noarch"
 ls "${HOME}/rpmbuild/SOURCES"
 ls "${HOME}/rpmbuild/SPECS"
-perl makemodulerpm.pl --rpm-depends --licence 'GPLv3' --allow-overwrite --target-dir tmp $epoch "$MOD" "$VERSION"
-mv "tmp/${NAME}_${VERSION}_all.deb" .
+perl makemodulerpm.pl --rpm-depends --licence 'GPLv3' --allow-overwrite $epoch "$MOD" "$VERSION"
+mv "${HOME}/rpmbuild/RPMS/noarch/${NAME}_${VERSION}-1.noarch.rpm" .
 
 # Publish to pulp, I guess?
