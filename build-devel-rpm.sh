@@ -29,4 +29,10 @@ ls "${HOME}/rpmbuild/SPECS"
 perl makemodulerpm.pl --rpm-depends --licence 'GPLv3' --allow-overwrite $epoch "$MOD" "$VERSION"
 mv "${HOME}/rpmbuild/RPMS/noarch/${NAME}-${VERSION}-1.noarch.rpm" .
 
-# Publish to pulp, I guess?
+# Copy to build/deploy server
+# Load the key into the ssh-agent
+ssh-add <(echo "$BUILD_SSH_PRIVATE_KEY")
+# Just make sure this works?
+ssh-add -l
+
+

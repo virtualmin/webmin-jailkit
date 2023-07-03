@@ -21,7 +21,7 @@ jobs:
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/makemodulerpm.pl
       - name: Build package
         env:
-          APTLY_USER: ${{ secrets.APTLY_USER }}
-          APTLY_PASSWD: ${{ secrets.APTLY_PASSWD }}
+          BUILD_USER: ${{ secrets.BUILD_USER }}
+          BUILD_SSH_PRIVATE_KEY: ${{ secrets.BUILD_SSH_PRIVATE_KEY }}
         run: |-
           jailkit/build-devel-rpm.sh
