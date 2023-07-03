@@ -22,7 +22,7 @@ fi
 
 mkdir tmp
 # FIXME after PR is merged to Webmin
-mkdir -p "${HOME}/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}"
+mkdir -p ${HOME}/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 mkdir -p "${HOME}/rpmbuild/RPMS/noarch"
 ls "${HOME}/rpmbuild/RPMS/noarch"
 ls "${HOME}/rpmbuild/SOURCES"
