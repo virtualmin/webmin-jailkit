@@ -22,7 +22,7 @@ fi
 
 mkdir tmp
 # FIXME after PR is merged to Webmin
-mkdir -p /usr/src/redhat
+mkdir -p /usr/src/redhat/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
 perl makemodulerpm.pl --rpm-depends --licence 'GPLv3' --allow-overwrite --target-dir tmp $epoch "$MOD" "$VERSION"
 mv "tmp/${NAME}_${VERSION}_all.deb" .
 
