@@ -27,12 +27,6 @@ ls "${HOME}/rpmbuild/RPMS/noarch"
 ls "${HOME}/rpmbuild/SOURCES"
 ls "${HOME}/rpmbuild/SPECS"
 perl makemodulerpm.pl --rpm-depends --licence 'GPLv3' --allow-overwrite $epoch "$MOD" "$VERSION"
-mv "${HOME}/rpmbuild/RPMS/noarch/${NAME}-${VERSION}-1.noarch.rpm" .
 
 # Copy to build/deploy server
-# Load the key into the ssh-agent
-ssh-add <(echo "$BUILD_SSH_PRIVATE_KEY")
-# Just make sure this works?
-ssh-add -l
-
-
+scp "${HOME}/rpmbuild/RPMS/noarch/${NAME}-${VERSION}-1.noarch.rpm" "$BUILD_USER"@build.virtualmin.com:/home/build/result/vm/7/gpl-devel/rpm/noarch
