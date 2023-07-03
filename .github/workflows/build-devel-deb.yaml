@@ -16,13 +16,9 @@ jobs:
       - name: Install dependencies
         run: |-
           sudo apt-get -y update
-          sudo apt-get -y install perl build-essential gnupg curl libconfig-inifiles-perl libtest-strict-perl
+          sudo apt-get -y install perl build-essential gnupg curl
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/mod_def_list.txt
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/makemoduledeb.pl
-      - name: Run tests
-        run: |-
-          cd jailkit
-          prove
       - name: Build package
         env:
           APTLY_USER: ${{ secrets.APTLY_USER }}

@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: |-
           sudo apt-get -y update
-          sudo apt-get -y install rpm perl build-essential gnupg curl libconfig-inifiles-perl libtest-strict-perl
+          sudo apt-get -y install rpm perl build-essential gnupg curl
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/mod_def_list.txt
           curl -O https://raw.githubusercontent.com/webmin/webmin/master/makemodulerpm.pl
       - name: Build package
