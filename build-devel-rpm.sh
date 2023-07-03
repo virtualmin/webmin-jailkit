@@ -24,6 +24,9 @@ mkdir tmp
 # FIXME after PR is merged to Webmin
 mkdir -p "${HOME}/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}"
 mkdir -p "${HOME}/rpmbuild/RPMS/noarch"
+ls "${HOME}/rpmbuild/RPMS/noarch"
+ls "${HOME}/rpmbuild/SOURCES"
+ls "${HOME}/rpmbuild/SPECS"
 perl makemodulerpm.pl --rpm-depends --licence 'GPLv3' --allow-overwrite --target-dir tmp $epoch "$MOD" "$VERSION"
 mv "tmp/${NAME}_${VERSION}_all.deb" .
 
