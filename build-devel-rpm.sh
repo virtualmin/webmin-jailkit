@@ -27,6 +27,6 @@ ls "${HOME}/rpmbuild/RPMS/noarch"
 ls "${HOME}/rpmbuild/SOURCES"
 ls "${HOME}/rpmbuild/SPECS"
 perl makemodulerpm.pl --rpm-depends --licence 'GPLv3' --allow-overwrite $epoch "$MOD" "$VERSION"
-mv "${HOME}/rpmbuild/RPMS/noarch/${NAME}_${VERSION}-1.noarch.rpm" .
+mv "${HOME}/rpmbuild/RPMS/noarch/${NAME}-${VERSION}-1.noarch.rpm" .
 
 # Publish to pulp, I guess?
