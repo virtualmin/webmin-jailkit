@@ -1,0 +1,21 @@
+name: "run-tests"
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: 'jailkit'
+
+      - name: Install dependencies
+        run: |-
+          sudo apt-get -y update
+          sudo apt-get -y install perl libconfig-inifiles-perl libtest-strict-perl
+      - name: Run tests
+        run: |-
+          cd jailkit
+          prove

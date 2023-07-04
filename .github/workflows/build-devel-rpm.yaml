@@ -1,0 +1,34 @@
+name: "build-devel-rpm"
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: 'jailkit'
+
+      - name: Install dependencies
+        run: |-
+          sudo apt-get -y update
+          sudo apt-get -y install rpm perl build-essential gnupg curl
+          curl -O https://raw.githubusercontent.com/webmin/webmin/master/mod_def_list.txt
+          curl -O https://raw.githubusercontent.com/webmin/webmin/master/makemodulerpm.pl
+      - name: Setup ssh
+        env:
+          BUILD_SSH_PRIVATE_KEY: ${{ secrets.BUILD_SSH_PRIVATE_KEY }}
+          BUILD_SSH_KNOWN_HOSTS: ${{ secrets.BUILD_SSH_KNOWN_HOSTS }}
+        run: |-
+          install -m 600 -D /dev/null ~/.ssh/id_ed25519
+          echo "${{ secrets.BUILD_SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.BUILD_SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+      - name: Build package
+        env:
+          BUILD_SSH_USER: ${{ secrets.BUILD_SSH_USER }}
+        run: |-
+          jailkit/build-devel-rpm.sh
