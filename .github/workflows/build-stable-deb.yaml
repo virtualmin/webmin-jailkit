@@ -1,0 +1,27 @@
+name: "build-stabledeb"
+
+on:
+  push:
+    branches:
+      - stable
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: 'jailkit'
+
+      - name: Install dependencies
+        run: |-
+          sudo apt-get -y update
+          sudo apt-get -y install perl build-essential gnupg curl
+          curl -O https://raw.githubusercontent.com/webmin/webmin/master/mod_def_list.txt
+          curl -O https://raw.githubusercontent.com/webmin/webmin/master/makemoduledeb.pl
+      - name: Build package
+        env:
+          APTLY_USER: ${{ secrets.APTLY_USER }}
+          APTLY_PASSWD: ${{ secrets.APTLY_PASSWD }}
+        run: |-
+          jailkit/build-stable-deb.sh
