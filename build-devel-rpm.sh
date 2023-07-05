@@ -29,7 +29,8 @@ ls "${HOME}/rpmbuild/SPECS"
 perl makemodulerpm.pl --rpm-depends --licence 'GPLv3' --allow-overwrite $epoch "$MOD" "$VERSION"
 
 # Copy to build/deploy server
-scp -i "${HOME}/.ssh/id_ed25519" "${HOME}/rpmbuild/RPMS/noarch/${NAME}-${VERSION}-1.noarch.rpm" "$BUILD_SSH_USER@build.virtualmin.com:/home/build/result/vm/7/gpl-devel/rpm/noarch"
+chmod g+w "${HOME}/rpmbuild/RPMS/noarch/${NAME}-${VERSION}-1.noarch.rpm"
+scp -i "${HOME}/.ssh/id_ed25519" -p "${HOME}/rpmbuild/RPMS/noarch/${NAME}-${VERSION}-1.noarch.rpm" "$BUILD_SSH_USER@build.virtualmin.com:/home/build/result/vm/7/gpl-devel/rpm/noarch"
 # Add it to the publish queue
 ssh -i "${HOME}/.ssh/id_ed25519" "$BUILD_SSH_USER@build.virtualmin.com" "flock /home/build/rpm-publish-queue -c 'echo vm/7/gpl-devel/rpm/noarch/${NAME}-${VERSION}-1.noarch.rpm >> /home/build/rpm-publish-queue'"
 
