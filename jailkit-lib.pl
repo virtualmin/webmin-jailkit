@@ -19,7 +19,10 @@ directives from jk_init.ini.
 BEGIN { push(@INC, ".."); }
 if (eval {require WebminCore;1;} ne 1) {
   exit 1;
+} else {
+  WebminCore->import();
 }
+
 init_config();
 
 =head2 get_jk_init_ini()
