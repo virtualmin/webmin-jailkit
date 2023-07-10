@@ -7,12 +7,9 @@ set -xeu
 MOD='jailkit'
 NAME="webmin-$MOD"
 
-# Always increasing. Also a human-readable datetime.
-BUILD=$(date +'%Y%m%d%H%M')
-
 # Load module.info to get version
 version=$(grep version $MOD/module.info | cut -d'=' -f2)
-VERSION="${version}.${BUILD}"
+VERSION="${version}"
 
 mkdir tmp
 perl makemoduledeb.pl --deb-depends --licence 'GPLv3' --email 'joe@virtualmin.com' --allow-overwrite --target-dir tmp "$MOD" "$VERSION"
