@@ -3,7 +3,9 @@ name: "build-devel-rpm"
 on:
   push:
     branches:
-      - master
+      - stable
+    paths:
+      - 'module.info'
 
 jobs:
   build:
@@ -32,4 +34,4 @@ jobs:
         env:
           BUILD_SSH_USER: ${{ secrets.BUILD_SSH_USER }}
         run: |-
-          jailkit/build-devel-rpm.sh
+          jailkit/build-stable-rpm.sh

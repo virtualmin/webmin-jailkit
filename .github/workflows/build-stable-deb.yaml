@@ -1,9 +1,11 @@
-name: "build-devel-deb"
+name: "build-stable-deb"
 
 on:
   push:
     branches:
-      - master
+      - stable
+    paths:
+      - 'module.info'
 
 jobs:
   build:
@@ -25,4 +27,4 @@ jobs:
           APTLY_USER: ${{ secrets.APTLY_USER }}
           APTLY_PASSWD: ${{ secrets.APTLY_PASSWD }}
         run: |-
-          jailkit/build-devel-deb.sh
+          jailkit/build-stable-deb.sh
