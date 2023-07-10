@@ -1,4 +1,4 @@
-name: "build-devel-rpm"
+name: "build-stable-rpm"
 
 on:
   push:
