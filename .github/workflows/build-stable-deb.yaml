@@ -1,9 +1,11 @@
-name: "build-stabledeb"
+name: "build-stable-deb"
 
 on:
   push:
     branches:
       - stable
+    paths:
+      - 'module.info'
 
 jobs:
   build:

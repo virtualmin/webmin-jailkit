@@ -3,7 +3,9 @@ name: "build-devel-rpm"
 on:
   push:
     branches:
-      - stable 
+      - stable
+    paths:
+      - 'module.info'
 
 jobs:
   build:
