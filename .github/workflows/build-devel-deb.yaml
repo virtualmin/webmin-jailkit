@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
+    if: github.repository == 'virtualmin/*'
     steps:
       - uses: actions/checkout@v3
         with:
