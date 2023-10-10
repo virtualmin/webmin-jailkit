@@ -17,11 +17,7 @@ directives from jk_init.ini.
 =cut
 
 BEGIN { push(@INC, ".."); }
-if (eval {require WebminCore;1;} ne 1) {
-  exit 1;
-} else {
-  WebminCore->import();
-}
+eval "use WebminCore;";
 
 init_config();
 
