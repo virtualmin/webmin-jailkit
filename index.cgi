@@ -21,7 +21,7 @@ foreach my $jail (@sections) {
     [
       {'type' => 'checkbox', 'name' => 'd', 'value' => $jail},
       "<a href=\"edit_jail.cgi?jail=$jail\">" . &html_escape($jail) . "</a>",
-      $jk_init_ini->val("$jail", 'comment')
+      $jk_init_ini->val("$jail", 'comment') || ""
     ]
   );
 }
