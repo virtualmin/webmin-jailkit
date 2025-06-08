@@ -37,3 +37,5 @@ error_jail_not_found=Jail named $1 doesn't exist!
 
 delete_are_you_sure=Are you sure you want to delete the following jail(s)? This action cannot be undone.
 delete_confirm=Delete
+
+__norefs=1
