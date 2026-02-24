@@ -33,8 +33,7 @@ else {
 print ui_form_start("save_jail.cgi");
 print ui_hidden("orig_jail", $in{'jail'});
 
-print ui_
-  print ui_hidden_table_start($text{'edit_jail_metadata'}, undef, 1,
+print ui_hidden_table_start($text{'edit_jail_metadata'}, undef, 1,
   'metadata', 1);
 
 # name
@@ -66,8 +65,7 @@ print ui_table_row(
 );
 print ui_table_row(
   hlink($text{'edit_jail_includesections'}, 'includesections'),
-  ui_textarea('includesections'),
-  $jail_params{'includesections'}
+  ui_textarea('includesections', $jail_params{'includesections'})
 );
 print ui_table_row(
   hlink($text{'edit_jail_emptydirs'}, 'emptydirs'),
